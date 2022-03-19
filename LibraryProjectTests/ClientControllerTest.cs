@@ -83,8 +83,8 @@ namespace LibraryProjectTests
             string clientSurname = "TestSurname";
             string clientPhone = "+79999999999";
 
-            JsonResult json = clientController.Add(clientName, clientSurname, clientPhone);
-            IClient data = json.Data as IClient;
+            JsonResult result = clientController.Add(clientName, clientSurname, clientPhone);
+            IClient data = result.Data as IClient;
 
             Assert.IsNotNull(data);
             Assert.IsTrue(data.Id >= 0);
@@ -97,15 +97,15 @@ namespace LibraryProjectTests
             string clientSurname = "TestSurname";
             string clientPhone = "+79999999999";
 
-            JsonResult json = clientController.Add(clientName, clientSurname, clientPhone);
-            IClient client = json.Data as IClient;
+            JsonResult result = clientController.Add(clientName, clientSurname, clientPhone);
+            IClient client = result.Data as IClient;
 
             Assert.IsNotNull(client);
             int id = client.Id;
             Assert.IsTrue(id >= 0);
 
-            json = clientController.ById(id);
-            IClient clientData = json.Data as IClient;
+            result = clientController.GetById(id);
+            IClient clientData = result.Data as IClient;
 
             Assert.IsNotNull(clientData);
             Assert.AreEqual(clientName, clientData.Name);

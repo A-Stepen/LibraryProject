@@ -30,14 +30,14 @@ namespace LibraryProject.Controllers
             return Json(new List<IClient>());
         }
 
-        [HttpPut]
+        [HttpPost]
         public JsonResult Add(string name, string surname, string phoneNumber)
         {
             IClient client = clientStorage.AddClient(name, surname, phoneNumber);
             return Json(client);
         }
 
-        public JsonResult ById(int id)
+        public JsonResult GetById(int id)
         {
             return Json(clientStorage.FindById(id));
         }
