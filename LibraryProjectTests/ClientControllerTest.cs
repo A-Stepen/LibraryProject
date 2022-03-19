@@ -32,6 +32,11 @@ namespace LibraryProjectTests
 
         Dictionary<int, IClient> clients = new Dictionary<int, IClient>();
 
+        public List<IClient> List()
+        {
+            return clients.Values.ToList();
+        }
+
         public IClient AddClient(string name, string surname, string phoneNumber)
         {
             int newId = 0;

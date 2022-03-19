@@ -27,7 +27,7 @@ namespace LibraryProject.Controllers
 
         public JsonResult List()
         {
-            return Json(new List<IClient>());
+            return Json(clientStorage.List());
         }
 
         [HttpPost]

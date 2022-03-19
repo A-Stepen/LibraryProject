@@ -3,5 +3,42 @@
     ViewBag.Title = "Index";
 }
 
+<script src="~/Scripts/Views/client.js"></script>
+
 <h2>Список пользователей</h2>
 
+<form id="NewClientForm">
+    <p>
+        <table>
+            <tr>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Номер телефона</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="Surname" /></td>
+                <td><input type="text" name="Name" /></td>
+                <td><input type="tel" placeholder="+7(999)000-00-00" name="PhoneNumber" /></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button data-url="@Url.Action("Add", "Client")" id="AddClientBtn" type="button">Добавить клиента</button>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <p>
+        <table>
+            <thead>
+                <tr>
+                    <th width="50px">Id</th>
+                    <th width="150px">Фамилия</th>
+                    <th width="150px">Имя</th>
+                    <th width="150px">Номер телефона</th>
+                </tr>
+            </thead>
+            <tbody id="ClientTableData" data-url="@Url.Action("List", "Client")">
+            </tbody>
+        </table>
+    </p>
+</form>
