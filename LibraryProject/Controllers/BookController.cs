@@ -29,6 +29,11 @@ namespace LibraryProject.Controllers
             return Json(new List<IBookProperty>());
         }
 
+        public JsonResult GetById(int id)
+        {
+            return Json(bookStorage.GetById(id));
+        }
+
         [HttpPost]
         public JsonResult RegisterBook(string title, string author, string description, int quantity)
         {
@@ -43,6 +48,11 @@ namespace LibraryProject.Controllers
         {
             int newLength = bookStorage.UpdateDescription(id, newDescription);
             return Json(newLength);
+        }
+
+        public JsonResult GetFilteredList(string titleFilter, string authorFilter)
+        {
+            return Json(bookStorage.FilterBook(titleFilter, authorFilter));
         }
 
         public ActionResult SearchForEdit()

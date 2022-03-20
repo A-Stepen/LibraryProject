@@ -96,6 +96,8 @@
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\Views\client.js" />
+    <Content Include="Scripts\Views\registerBook.js" />
+    <Content Include="Scripts\Views\SearchAndEdit.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +126,8 @@
     <Content Include="Views\Operation\Index.cshtml" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Views\Book\SearchForEdit.cshtml" />
+    <Content Include="Views\Book\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

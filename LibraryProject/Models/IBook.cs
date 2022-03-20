@@ -17,6 +17,9 @@ namespace LibraryProject.Models
         IBookProperty RegisterBook(string title, string author, string description);
         IEnumerable<IBook> AddBook(int propertyId, int quantity);
         int UpdateDescription(int propertyId, string description);
+        List<IBookProperty> FilterBook(string titleFilter, string authorFilter);
+
+        IBookProperty GetById(int id);
     }
 
     public enum BookState

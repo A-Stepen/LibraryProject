@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "SearchForEdit";
+}
+
+<script src="~/Scripts/Views/SearchAndEdit.js"></script>
+
+<h2>SearchForEdit</h2>
+
+<form id="BookEditForm" hidden="hidden" data-url="@Url.Action("GetById", "Book")">
+    <input type="hidden" name="Id" />
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <input type="text" hidden="hidden" name="Id"/>
+                <td><input type="text" readonly="readonly" name="Title" /></td>
+                <td><input type="text" readonly="readonly" name="Author" /></td>
+                <td><input type="text" name="newDescription" /></td>
+            </tr>
+            <tr>
+                <td colspan="3"><button id="ApplyEditForm" type="button" data-url="@Url.Action("UpdateDescription", "Book")">Подтвердить</button></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Поиск</th>
+        </tr>
+        <tr>
+            <th hidden="hidden"></th>
+            <th width="150px">Название</th>
+            <th width="150px">Автор</th>
+            <th width="350px">Описание</th>
+        </tr>
+        <tr>
+            <form id="FilterForm" data-url="@Url.Action("GetFilteredList", "Book")">
+                <th hidden="hidden"></th>
+                <th><input type="text" id="TitleFilter" name="TitleFilter" /></th>
+                <th><input type="text" id="AuthorFilter" name="AuthorFilter" /></th>
+                <th></th>
+            </form>
+        </tr>
+    </thead>
+    <tbody id="FilteredBooksTable">
+
+    </tbody>
+</table>

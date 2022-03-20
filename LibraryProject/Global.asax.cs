@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 using LibraryProject.Controllers;
-
+using LibraryProject.Models;
 
 namespace LibraryProject
 {
@@ -80,6 +80,22 @@ namespace LibraryProject
             bookProperty = new BookPropertieMock(propertyId, bookProperty.Title, bookProperty.Author, description);
             bookProperties[propertyId] = bookProperty;
             return description.Length;
+        }
+
+        public List<IBookProperty> FilterBook(string titleFilter, string authorFilter)
+        {
+            if (titleFilter == null && authorFilter == null)
+                return new List<IBookProperty>();
+
+            titleFilter = titleFilter == null ? string.Empty : titleFilter;
+            authorFilter = authorFilter == null ? string.Empty : authorFilter;
+            var result = from book in bookProperties.Values where (book.Author.Contains(authorFilter) && book.Title.Contains(titleFilter)) select book;
+            return result.ToList();
+        }
+
+        public IBookProperty GetById(int id)
+        {
+            return bookProperties[id];
         }
     }
 

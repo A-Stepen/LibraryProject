@@ -83,6 +83,21 @@ namespace LibraryProjectTests
             bookProperties[propertyId] = bookProperty;
             return description.Length;
         }
+        public List<IBookProperty> FilterBook(string titleFilter, string authorFilter)
+        {
+            if (titleFilter == null && authorFilter == null)
+                return new List<IBookProperty>();
+
+            titleFilter = titleFilter == null ? string.Empty : titleFilter;
+            authorFilter = authorFilter == null ? string.Empty : authorFilter;
+            var result = from book in bookProperties.Values where (book.Author.Contains(authorFilter) && book.Title.Contains(titleFilter)) select book;
+            return result.ToList();
+        }
+
+        public IBookProperty GetById(int id)
+        {
+            return bookProperties[id];
+        }
     }
 
 
