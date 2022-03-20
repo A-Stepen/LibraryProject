@@ -11,16 +11,19 @@ using LibraryProject.Models;
 namespace LibraryProject
 {
 
+
     public class MvcApplication : HttpApplication
     {
-        ClientSqlStorage clientStorage = new ClientSqlStorage("Host=192.168.1.39;Port=5434;Username=USER;Password=USER;");
-        BookSqlStorage bookStorage = new BookSqlStorage("Host=192.168.1.39;Port=5434;Username=USER;Password=USER;");
-
+        ClientSqlStorage clientStorage;
+        BookSqlStorage bookStorage;
 
         protected void Application_Start()
         {
             string path = Environment.GetEnvironmentVariable("ConnDataPath");
-            System.IO.File.ReadAllText(path);
+            string connString = path != null ? System.IO.File.ReadAllText(path) : "Host=192.168.1.39;Port=5434;Username=USER;Password=USER;";
+
+            clientStorage = new ClientSqlStorage(connString);
+            bookStorage = new BookSqlStorage(connString);
 
             List<string[]> initialBooks = new List<string[]>()
             {

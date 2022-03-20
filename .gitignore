@@ -5,3 +5,5 @@
 /packages
 /.vs
 *.user
+/SqlStorageTests/bin/*
+/SqlStorageTests/obj/*

@@ -1,0 +1,16 @@
+version: "4.6"
+services:
+    web:
+        build: LibraryProject/.
+        ports:
+            - "80:80"
+        environment:
+            DB_CONNECTION_STRING: None
+    
+    postgres_db:
+        build: DB/.
+        environment:
+            POSTGRES_USER: USER
+            POSTGRES_PASSWORD: USER
+        volumes:
+            - D:\Projects\C#\AspNet\LibraryProj\DB_data:/var/lib/postgresql/data
