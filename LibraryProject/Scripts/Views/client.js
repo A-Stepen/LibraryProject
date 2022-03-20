@@ -8,7 +8,6 @@
             var rows = [];
             $.each(data, function (key, val) {
                 let row = `<tr><td>${val['Id']}</td><td>${val['Surname']}</td><td>${val['Name']}</td><td>${val['PhoneNumber']}</td></tr>`;
-                console.log(row);
                 rows.push(row);
             });
 
