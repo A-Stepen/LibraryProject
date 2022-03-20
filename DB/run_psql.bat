@@ -1,0 +1,1 @@
+docker run -it --rm --network NET postgres psql -h some-postgres -U USER

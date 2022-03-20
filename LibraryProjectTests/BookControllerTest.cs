@@ -94,7 +94,7 @@ namespace LibraryProjectTests
             return result.ToList();
         }
 
-        public IBookProperty GetById(int id)
+        public IBookProperty GetPropertyById(int id)
         {
             return bookProperties[id];
         }

@@ -1,0 +1,1 @@
+docker run --name some-postgres --network NET --rm -it -p 5434:5432  -e POSTGRES_USER=USER -e POSTGRES_PASSWORD=USER -d library_db
