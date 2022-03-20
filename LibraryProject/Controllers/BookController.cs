@@ -31,7 +31,7 @@ namespace LibraryProject.Controllers
 
         public JsonResult GetById(int id)
         {
-            return Json(bookStorage.GetById(id));
+            return Json(bookStorage.GetPropertyById(id));
         }
 
         [HttpPost]
