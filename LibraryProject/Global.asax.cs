@@ -10,6 +10,79 @@ using LibraryProject.Controllers;
 
 namespace LibraryProject
 {
+    class BookStorageMock : Models.IBookStorage
+    {
+        public class BookPropertieMock : Models.IBookProperty
+        {
+            public int Id { get; private set; }
+            public string Title { get; private set; }
+            public string Author { get; private set; }
+            public string Description { get; private set; }
+
+            public BookPropertieMock(int id, string title, string author, string description)
+            {
+                Id = id;
+                Title = title;
+                Author = author;
+                Description = description;
+            }
+        }
+
+        public class BookMock : Models.IBook
+        {
+            public int Id { get; private set; }
+            public int PropertyId { get; private set; }
+            public Models.BookState State { get; private set; }
+
+            public BookMock(int id, int propertyId, Models.BookState state)
+            {
+                Id = id;
+                PropertyId = propertyId;
+                State = state;
+            }
+        }
+
+        public readonly Dictionary<int, Models.IBookProperty> bookProperties = new Dictionary<int, Models.IBookProperty>();
+        public readonly Dictionary<int, Models.IBook> books = new Dictionary<int, Models.IBook>();
+
+        public IEnumerable<Models.IBook> AddBook(int propertyId, int quantity)
+        {
+            int id = 0;
+            if (books.Count > 0)
+                id = books.Keys.Max() + 1;
+
+            List<Models.IBook> newBooks = new List<Models.IBook>();
+            for (int i = 0; i < quantity; ++i, ++id)
+            {
+                BookMock book = new BookMock(id, propertyId, Models.BookState.Available);
+                newBooks.Add(book);
+                books.Add(id, book);
+            }
+
+            return newBooks;
+        }
+
+        public Models.IBookProperty RegisterBook(string title, string author, string description)
+        {
+            int id = 0;
+            if (bookProperties.Count > 0)
+                id = bookProperties.Keys.Max() + 1;
+
+            BookPropertieMock bookProperie = new BookPropertieMock(id, title, author, description);
+            bookProperties.Add(id, bookProperie);
+
+            return bookProperie;
+        }
+
+        public int UpdateDescription(int propertyId, string description)
+        {
+            Models.IBookProperty bookProperty = bookProperties[propertyId];
+            bookProperty = new BookPropertieMock(propertyId, bookProperty.Title, bookProperty.Author, description);
+            bookProperties[propertyId] = bookProperty;
+            return description.Length;
+        }
+    }
+
     class ClientStorageMock : Models.IClientStorage
     {
         class Client : Models.IClient
@@ -62,7 +135,7 @@ namespace LibraryProject
     public class MvcApplication : HttpApplication
     {
         ClientStorageMock clientStorageMock = new ClientStorageMock();
-
+        BookStorageMock bookStorageMock = new BookStorageMock();
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -70,7 +143,8 @@ namespace LibraryProject
 
             Dictionary<Type, Func<IController>> injection = new Dictionary<Type, Func<IController>>()
             {
-                { typeof(ClientController), () => new ClientController(clientStorageMock) }
+                { typeof(ClientController), () => new ClientController(clientStorageMock) },
+                { typeof(BookController), () => new BookController(bookStorageMock) }
             };
             ControllerBuilder.Current.SetControllerFactory(new DefaultControllerFactory(new InjectableControllerActivator(injection)));
         }

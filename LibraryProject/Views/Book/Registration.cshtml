@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<script src="~/Scripts/Views/registerBook.js"></script>
+
+<h2>Регистрация новых книг</h2>
+
+
+<form id="BookForm">
+    <table>
+        <tr>
+            <td>Заголовок</td>
+            <td><input type="text" name="Title"/></td>
+        </tr>
+        <tr>
+            <td>Автор</td>
+            <td><input type="text" name="Author"/></td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td><input type="text" name="Description"/></td>
+        </tr>
+        <tr>
+            <td>Количество</td>
+            <td><input type="number" name="Quantity" min="1" value="1"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button id="RegisterNewBookBtn" data-url="@Url.Action("RegisterBook", "Book")" type="button">Добавить</button></td>
+        </tr>
+    </table>
+</form>
+

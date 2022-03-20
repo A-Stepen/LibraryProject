@@ -29,7 +29,7 @@ namespace LibraryProject.Controllers
             return Json(new List<IBookProperty>());
         }
 
-        [HttpPut]
+        [HttpPost]
         public JsonResult RegisterBook(string title, string author, string description, int quantity)
         {
             IBookProperty bookProperty = bookStorage.RegisterBook(title, author, description);
@@ -43,6 +43,16 @@ namespace LibraryProject.Controllers
         {
             int newLength = bookStorage.UpdateDescription(id, newDescription);
             return Json(newLength);
+        }
+
+        public ActionResult SearchForEdit()
+        {
+            return View();
+        }
+
+        public ActionResult Registration()
+        {
+            return View();
         }
     }
 }
