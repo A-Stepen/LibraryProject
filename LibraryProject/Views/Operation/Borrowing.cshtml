@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Borrowing";
+}
+<script src="~/Scripts/Views/borrowing.js"></script>
+
+<h2>Выдача книги</h2>
+
+
+<div id="BookSelectionForm">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Поиск</th>
+            </tr>
+            <tr>
+                <th hidden="hidden"></th>
+                <th width="150px">Название</th>
+                <th width="150px">Автор</th>
+                <th width="350px">Описание</th>
+            </tr>
+            <tr>
+                <form id="FilterForm" data-url="@Url.Action("GetFilteredList", "Book")">
+                <th hidden="hidden"></th>
+                <th><input type="text" id="TitleFilter" name="TitleFilter" /></th>
+                <th><input type="text" id="AuthorFilter" name="AuthorFilter" /></th>
+                <th></th>
+                </form>
+            </tr>
+        </thead>
+        <tbody id="FilteredBooksTable">
+        </tbody>
+    </table>
+</div>
+
+<div id="BookConfirmation" hidden="hidden" data-url="@Url.Action("GetById", "Book")">
+    <table>
+        <thead>
+            <tr>
+                <th hidden="hidden"></th>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Кол-во в наличии</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="bookConfirmId" hidden="hidden"></td>
+                <td id="bookConfirmTitle"></td>
+                <td id="bookConfirmAuthor"></td>
+                <td id="bookConfirmQuantity"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="ClientSelectionForm" hidden="hidden">
+
+</div>
+
+
+<div id="BorowingConfirmation" hidden="hidden">
+
+</div>

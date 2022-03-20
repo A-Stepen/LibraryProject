@@ -13,5 +13,10 @@ namespace LibraryProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Borrowing()
+        {
+            return View();
+        }
     }
 }
