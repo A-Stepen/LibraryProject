@@ -98,6 +98,21 @@ namespace LibraryProjectTests
         {
             return bookProperties[id];
         }
+
+        public Tuple<IBookProperty, int, int> GetAvailableCountPropertyId(int propertyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int BorrowBook(int clientId, int bookId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<IBookBorrowing> FilterBorrows(string nameFilter, string surnameFilter, string phoneFilter, string titleFilter, string authorFilter)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

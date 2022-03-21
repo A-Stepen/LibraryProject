@@ -58,6 +58,10 @@ namespace LibraryProjectTests
             return null;
         }
 
+        public List<IClient> Filter(string name, string surname, string phone)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 

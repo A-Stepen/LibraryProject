@@ -141,6 +141,7 @@
     <Content Include="Scripts\Views\borrowing.js" />
     <Content Include="Scripts\Views\client.js" />
     <Content Include="Scripts\Views\registerBook.js" />
+    <Content Include="Scripts\Views\returning.js" />
     <Content Include="Scripts\Views\searchAndEdit.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -155,6 +156,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OperationController.cs" />
     <Compile Include="Models\IBook.cs" />
+    <Compile Include="Models\IBookBorrowing.cs" />
     <Compile Include="Models\IBookProperty.cs" />
     <Compile Include="Models\IBookStorage.cs" />
     <Compile Include="Models\IClient.cs" />
@@ -179,6 +181,7 @@
     <Content Include="Views\Book\SearchForEdit.cshtml" />
     <Content Include="Views\Book\Registration.cshtml" />
     <Content Include="Views\Operation\Borrowing.cshtml" />
+    <Content Include="Views\Operation\Returning.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

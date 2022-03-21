@@ -7,6 +7,4 @@
         string Author { get; }
         string Description { get; }
     }
-
-
 }

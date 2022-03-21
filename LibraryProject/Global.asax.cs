@@ -49,7 +49,8 @@ namespace LibraryProject
             Dictionary<Type, Func<IController>> injection = new Dictionary<Type, Func<IController>>()
             {
                 { typeof(ClientController), () => new ClientController(clientStorage) },
-                { typeof(BookController), () => new BookController(bookStorage) }
+                { typeof(BookController), () => new BookController(bookStorage) },
+                { typeof(OperationController), () => new OperationController(bookStorage) },
             };
             ControllerBuilder.Current.SetControllerFactory(new DefaultControllerFactory(new InjectableControllerActivator(injection)));
         }

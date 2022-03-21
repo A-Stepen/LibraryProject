@@ -29,7 +29,7 @@ namespace LibraryProject.Controllers
             return Json(new List<IBookProperty>());
         }
 
-        public JsonResult GetById(int id)
+        public JsonResult GetPropertyById(int id)
         {
             return Json(bookStorage.GetPropertyById(id));
         }
@@ -53,6 +53,11 @@ namespace LibraryProject.Controllers
         public JsonResult GetFilteredList(string titleFilter, string authorFilter)
         {
             return Json(bookStorage.FilterBook(titleFilter, authorFilter));
+        }
+
+        public JsonResult GetAvailableCountPropertyId(int propertyId)
+        {
+            return Json(bookStorage.GetAvailableCountPropertyId(propertyId));
         }
 
         public ActionResult SearchForEdit()

@@ -20,10 +20,10 @@
                 <th width="350px">Описание</th>
             </tr>
             <tr>
-                <form id="FilterForm" data-url="@Url.Action("GetFilteredList", "Book")">
+                <form id="BookFilterForm" data-url="@Url.Action("GetFilteredList", "Book")">
                 <th hidden="hidden"></th>
-                <th><input type="text" id="TitleFilter" name="TitleFilter" /></th>
-                <th><input type="text" id="AuthorFilter" name="AuthorFilter" /></th>
+                <th><input type="text" id="TitleBookFilter" class="BookFilter" name="TitleFilter" /></th>
+                <th><input type="text" id="AuthorBookFilter" class="BookFilter" name="AuthorFilter" /></th>
                 <th></th>
                 </form>
             </tr>
@@ -33,7 +33,7 @@
     </table>
 </div>
 
-<div id="BookConfirmation" hidden="hidden" data-url="@Url.Action("GetById", "Book")">
+<div id="BookConfirmation" hidden="hidden" data-url="@Url.Action("GetAvailableCountPropertyId", "Book")">
     <table>
         <thead>
             <tr>
@@ -55,11 +55,61 @@
 </div>
 
 
-<div id="ClientSelectionForm" hidden="hidden">
-
+<div id="ClientSelectionForm" hidden="hidden" data-url="@Url.Action("GetFilteredList", "Client")">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Поиск клиента</th>
+            </tr>
+            <tr>
+                <th hidden="hidden"></th>
+                <th width="150px">Фамилия</th>
+                <th width="150px">Имя</th>
+                <th width="150px">Номер телефона</th>
+            </tr>
+            <tr>
+                <form id="ClientFilterForm">
+                <th hidden="hidden"></th>
+                <th><input type="text" class="ClientFilter" id="NameClientFilter" name="nameFilter" /></th>
+                <th><input type="text" class="ClientFilter" id="SurnameClientFilter" name="surnameFilter" /></th>
+                <th><input type="text" class="ClientFilter" id="PhoneClientFilter" name="phoneFilter" /></th>
+                </form>
+            </tr>
+        </thead>
+        <tbody id="FilteredClientTable">
+        </tbody>
+    </table>
 </div>
 
 
 <div id="BorowingConfirmation" hidden="hidden">
-
+    <form action="@Url.Action("BorrowBook", "Operation")">
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Номер телефона</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" id="clientId" name="clientId" />
+                        <input type="hidden" id="bookId" name="bookId" />
+                        <div id="clientName"></div>
+                    </td>
+                    <td>
+                        <div id="clientSurname"></div>
+                    </td>
+                    <td>
+                        <div id="clientPhone"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button type="submit" id="submit">Подтвердить</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
 </div>

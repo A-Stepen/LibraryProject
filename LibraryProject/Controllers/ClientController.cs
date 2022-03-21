@@ -41,5 +41,10 @@ namespace LibraryProject.Controllers
         {
             return Json(clientStorage.FindById(id));
         }
+
+        public JsonResult GetFilteredList(string nameFilter, string surnameFilter, string phoneNumberFilter)
+        {
+            return Json(clientStorage.Filter(nameFilter, surnameFilter, phoneNumberFilter));
+        }
     }
 }

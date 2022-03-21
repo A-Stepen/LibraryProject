@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Returning";
+}
+
+<script src="~/Scripts/Views/returning.js"></script>
+
+
+<h2>Возврат книги</h2>
+
+<form id="BorrowFilterForm" data-url="@Url.Action("FilterBorrow", "Operation")">
+    <table>
+        <thead>
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Номер телефона</th>
+                <th>Название книги</th>
+                <th>Автор</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input class="Filter" type="text" name="NameFilter"/></td>
+                <td><input class="Filter" type="text" name="SurnameFilter"/></td>
+                <td><input class="Filter" type="text" name="PhoneFilter"/></td>
+                <td><input class="Filter" type="text" name="TitleFilter"/></td>
+                <td><input class="Filter" type="text" name="AuthorFilter"/></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Номер телефона</th>
+            <th>Название книги</th>
+            <th>Автор</th>
+        </tr>
+    </thead>
+    <tbody id="FilteredBorrowedTabe">
+    </tbody>
+</table>
+
+<form hidden="hidden" id="submitForm" action="@Url.Action("ReturnBook", "Operation")" data-url="@Url.Action("GetBorrowById", "Operation")">
+    <table>
+        <thead>
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Номер телефона</th>
+                <th>Название книги</th>
+                <th>Автор</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="hidden" name="Id" /><input type="hidden" name="ClientId" /> <input type="hidden" name="BookId" />
+                <input type="text" readonly="readonly" name="ClientSurname" /></td>
+                <td><input type="text" readonly="readonly" name="ClientName" /></td>
+                <td><input type="text" readonly="readonly" name="ClientPhone" /></td>
+                <td><input type="text" readonly="readonly" name="BookTitle" /></td>
+                <td><input type="text" readonly="readonly" name="BookAuthor" /></td>
+            </tr>
+            <tr>
+                <td colspan="5"><button type="submit">Подтвердить</button></td>
+            </tr>
+        </tbody>
+    </table>
+</form>

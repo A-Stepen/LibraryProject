@@ -9,5 +9,7 @@ namespace LibraryProject.Models
         List<IClient> List();
         IClient AddClient(string name, string surname, string phoneNumber);
         IClient FindById(int id);
+
+        List<IClient> Filter(string nameFilter, string surnameFilter, string phoneFilter);
     }
 }
